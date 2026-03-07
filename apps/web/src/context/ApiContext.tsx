@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { createApiClient, type ApiClient } from "../api/client";
 import { auth0Config } from "../auth/auth0";
 
-const ApiContext = createContext<ApiClient | null>(null);
+export const ApiContext = createContext<ApiClient | null>(null);
 
 export function ApiProvider({ children }: { children: React.ReactNode }) {
   const { getAccessTokenSilently } = useAuth0();

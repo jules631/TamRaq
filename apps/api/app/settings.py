@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     APP_ENCRYPTION_KEY: str = ""  # Fernet base64-encoded 32-byte key
     SSE_TOKEN_SIGNING_KEY: str = ""  # HMAC secret for SSE JWT
     CORS_ORIGINS: str = "http://localhost:5173"
+    DEMO_MODE: bool = False  # When true, bypasses Auth0 and seeds demo data
 
     @property
     def cors_origins_list(self) -> list[str]:

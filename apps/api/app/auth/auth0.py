@@ -5,6 +5,9 @@ from jwt import PyJWKClient
 
 from app.settings import settings
 
+DEMO_USER_ID = "demo|user"
+DEMO_TOKEN = "demo-token"
+
 
 @lru_cache(maxsize=1)
 def _get_jwks_client() -> PyJWKClient:
@@ -15,6 +18,8 @@ def _get_jwks_client() -> PyJWKClient:
 
 
 def verify_token(token: str) -> dict:
+    if settings.DEMO_MODE and token == DEMO_TOKEN:
+        return {"sub": DEMO_USER_ID, "demo": True}
     client = _get_jwks_client()
     signing_key = client.get_signing_key_from_jwt(token)
     payload: dict = jwt.decode(

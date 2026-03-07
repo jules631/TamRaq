@@ -13,7 +13,7 @@ import RunSync from "./pages/RunSync";
 import SyncRuns from "./pages/SyncRuns";
 import SyncRunDetails from "./pages/SyncRunDetails";
 
-function AppRoutes() {
+export function AppRoutes() {
   const { syncRunning } = useSyncRunning();
   return (
     <BrowserRouter>

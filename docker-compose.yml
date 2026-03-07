@@ -51,5 +51,17 @@ services:
     working_dir: /app
     command: npm run dev -- --host
 
+  # ── Demo / development only ─────────────────────────────────────────────────
+  # A lightweight FastAPI server that mimics the Salesforce REST API.
+  # Used when DEMO_MODE=true so the app works with zero external dependencies.
+  mock-sf:
+    build:
+      context: ./apps/mock-sf
+    restart: unless-stopped
+    ports:
+      - "8888:8888"
+    profiles:
+      - demo
+
 volumes:
   postgres_data:
