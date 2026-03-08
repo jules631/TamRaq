@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     SSE_TOKEN_SIGNING_KEY: str = ""  # HMAC secret for SSE JWT
     CORS_ORIGINS: str = "http://localhost:5173"
     DEMO_MODE: bool = False  # When true, bypasses Auth0 and seeds demo data
+    MOCK_SF_BASE_URL: str = "http://mock-sf:8888"  # Override for local dev
 
     @property
     def cors_origins_list(self) -> list[str]:
