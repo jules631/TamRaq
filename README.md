@@ -207,7 +207,7 @@ SSE_TOKEN_SIGNING_KEY=<random-secret-32-chars+>
 ### 2. Boot the stack
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 This starts Postgres, runs database migrations automatically, then starts the API (port 8000) and web app (port 5173).
@@ -300,7 +300,7 @@ tamarac-fsc-connector/
 To manually create a tenant and add a user without going through the UI:
 
 ```bash
-docker-compose exec api python seed.py \
+docker compose exec api python seed.py \
   --tenant-name "Acme Wealth Management" \
   --slug acme \
   --auth0-user-id auth0|YOUR_USER_ID

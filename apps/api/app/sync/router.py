@@ -58,6 +58,12 @@ async def start_sync_run(
     except Exception as exc:
         raise HTTPException(status_code=502, detail=f"Salesforce auth failed: {exc}") from exc
 
+    # Detach sync_cfg from the session now, before db.commit() expires it.
+    # run_sync runs as a background task after this session closes, so it
+    # must not hold a live SQLAlchemy reference that needs a session to load.
+    if sync_cfg:
+        db.expunge(sync_cfg)
+
     # Create SyncRun row
     run = SyncRun(
         tenant_id=tid,

@@ -1,0 +1,7 @@
+HouseholdExternalId,HouseholdName,ContactExternalId,ContactFirstName,ContactLastName,ContactEmail,ContactPhone,ContactRole,IsPrimaryContact,FinancialAccountExternalId,FinancialAccountName,FinancialAccountNumber,Custodian,AccountType,PositionExternalId,Symbol,CUSIP,Quantity,Price,MarketValue,PositionAsOfDate
+HH001,The Smith Family,C001,John,Smith,john.smith@example.com,555-0100,Owner,true,FA001,Smith Brokerage IRA,IRA-12345,Schwab,Individual Retirement Account,POS001,AAPL,,100,175.50,17550.00,2024-01-15
+HH001,The Smith Family,C002,Jane,Smith,jane.smith@example.com,555-0101,Spouse,false,FA001,Smith Brokerage IRA,IRA-12345,Schwab,Individual Retirement Account,POS002,MSFT,,50,380.00,19000.00,2024-01-15
+HH001,The Smith Family,C001,John,Smith,john.smith@example.com,555-0100,Owner,true,FA002,Smith Joint Account,JNT-67890,Fidelity,Joint,POS003,GOOGL,,25,140.00,3500.00,2024-01-15
+HH002,The Johnson Trust,C003,Robert,Johnson,robert.j@example.com,555-0200,Trustee,true,FA003,Johnson Revocable Trust,TRU-11111,Schwab,Trust,POS004,BRK.B,,200,360.00,72000.00,2024-01-15
+HH002,The Johnson Trust,C004,Mary,Johnson,mary.j@example.com,555-0201,Beneficiary,false,FA003,Johnson Revocable Trust,TRU-11111,Schwab,Trust,POS005,VTI,,300,220.00,66000.00,2024-01-15
+HH003,Williams Retirement,C005,Patricia,Williams,pat.williams@example.com,555-0300,Owner,true,FA004,Williams 401k Rollover,IRA-99999,Vanguard,Individual Retirement Account,POS006,VTI,,500,220.00,110000.00,2024-01-15
