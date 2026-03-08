@@ -425,7 +425,14 @@ async def run_sync(
 
     except Exception:
         logger.exception("Sync run %s failed with unhandled exception", run_id)
-        await emit({"type": "done", "status": "failed", "message": "Internal sync error"})
+        await emit({
+            "type": "done",
+            "status": "failed",
+            "message": "Internal sync error",
+            "successCount": success_count,
+            "failureCount": failure_count,
+            "duplicateCount": duplicate_count,
+        })
         await _update_run(
             run_id=run_id,
             status="failed",
