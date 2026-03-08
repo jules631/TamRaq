@@ -82,8 +82,28 @@ def _detect_ext_field(soql: str) -> str | None:
     return m.group(1) if m else None
 
 
+_MOCK_RECORD_TYPES = [
+    {
+        "attributes": {"type": "RecordType"},
+        "Id": "012000000000001AAA",
+        "Name": "Household Account",
+        "DeveloperName": "HH_Account",
+    },
+    {
+        "attributes": {"type": "RecordType"},
+        "Id": "012000000000002AAA",
+        "Name": "Individual",
+        "DeveloperName": "Individual",
+    },
+]
+
+
 @app.get("/services/data/{version}/query")
 async def soql_query(version: str, q: str = ""):
+    # RecordType query from sync-mapping describe
+    if re.search(r"FROM\s+RecordType\b", q, re.IGNORECASE):
+        return {"totalSize": len(_MOCK_RECORD_TYPES), "done": True, "records": _MOCK_RECORD_TYPES}
+
     ext_field = _detect_ext_field(q)
     values = _parse_in_values(q)
 

@@ -24,7 +24,7 @@ class SalesforceClient:
     @classmethod
     def from_config(cls, cfg: SalesforceConfig) -> "SalesforceClient":
         if settings.DEMO_MODE:
-            return cls("mock-sf-access-token", cfg.login_url)
+            return cls("mock-sf-access-token", "http://mock-sf:8888")
         private_key_pem = decrypt(cfg.encrypted_private_key)
         token_data = get_salesforce_token(
             cfg.login_url,
