@@ -4,6 +4,7 @@ from app.auth.dependencies import require_sf_config, require_tenant_member
 from app.db.models import SalesforceConfig
 from app.salesforce import describe, schemas
 from app.salesforce.client import SalesforceClient
+from app.settings import settings
 
 router = APIRouter(tags=["salesforce"])
 
@@ -23,6 +24,12 @@ async def test_connection(
     tenant_id: str,
     cfg: SalesforceConfig = Depends(require_sf_config),
 ):
+    if settings.DEMO_MODE:
+        return schemas.TestConnectionOut(
+            orgId="00D000000000001EAA",
+            instanceUrl="http://mock-sf:8888",
+            username="demo@example.com",
+        )
     sf = _sf_client(cfg)
     try:
         info = await sf.get_org_info()
