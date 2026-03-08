@@ -128,6 +128,17 @@ async def describe(version: str, sobject: str):
     return {"name": sobject, "fields": fields}
 
 
+# ── User info ────────────────────────────────────────────────────────────────
+
+@app.get("/services/oauth2/userinfo")
+async def userinfo():
+    return {
+        "organization_id": "00D000000000001EAA",
+        "preferred_username": "demo@example.com",
+        "sub": "https://login.salesforce.com/id/00D000000000001EAA/005000000000001EAA",
+    }
+
+
 # ── Health ───────────────────────────────────────────────────────────────────
 
 @app.get("/health")

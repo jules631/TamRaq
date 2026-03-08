@@ -8,6 +8,7 @@ import httpx
 
 from app.db.models import SalesforceConfig
 from app.salesforce.jwt_auth import get_salesforce_token
+from app.settings import settings
 from app.utils.crypto import decrypt
 
 API_VERSION = "v59.0"
@@ -22,6 +23,8 @@ class SalesforceClient:
 
     @classmethod
     def from_config(cls, cfg: SalesforceConfig) -> "SalesforceClient":
+        if settings.DEMO_MODE:
+            return cls("mock-sf-access-token", cfg.login_url)
         private_key_pem = decrypt(cfg.encrypted_private_key)
         token_data = get_salesforce_token(
             cfg.login_url,
