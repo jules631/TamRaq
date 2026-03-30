@@ -1,5 +1,7 @@
 # Tamarac FSC Connector
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jules631/TamRaq)
+
 > Move client data from Tamarac into Salesforce Financial Services Cloud — no coding, no manual entry, no expensive middleware.
 
 ---
@@ -320,6 +322,27 @@ Find your Auth0 user ID in the Auth0 dashboard under **Users**.
 | KMS-backed encryption | Architecture is ready; swap `utils/crypto.py` implementation |
 | Multi-worker SSE | Single worker only in MVP; Redis pub/sub needed for scale |
 | Salesforce production orgs | Sandbox only recommended for initial rollout |
+
+---
+
+## Deploying the Frontend to Vercel
+
+The React frontend deploys to Vercel with one click. The `vercel.json` at the repo root handles the build configuration automatically.
+
+**One-click deploy:**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jules631/TamRaq)
+
+**Environment variables to set in Vercel dashboard:**
+
+| Variable | Value |
+|---|---|
+| `VITE_API_BASE_URL` | URL of your deployed API (e.g. `https://api.yourdomain.com`) |
+| `VITE_AUTH0_DOMAIN` | Your Auth0 tenant domain |
+| `VITE_AUTH0_CLIENT_ID` | Auth0 SPA application client ID |
+| `VITE_AUTH0_AUDIENCE` | Auth0 API audience identifier |
+
+> The backend (FastAPI + Postgres) is not Vercel-deployable and should be deployed via Docker Compose on a VPS, Railway, Render, or similar. See `docker-compose.yml`.
 
 ---
 
