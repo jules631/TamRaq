@@ -1,0 +1,14 @@
+{
+  "buildCommand": "cd apps/web && npm install && npm run build",
+  "outputDirectory": "apps/web/dist",
+  "framework": null,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "env": {
+    "VITE_API_BASE_URL": "@vite_api_base_url",
+    "VITE_AUTH0_DOMAIN": "@vite_auth0_domain",
+    "VITE_AUTH0_CLIENT_ID": "@vite_auth0_client_id",
+    "VITE_AUTH0_AUDIENCE": "@vite_auth0_audience"
+  }
+}
